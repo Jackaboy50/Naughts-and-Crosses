@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "Naughts and Crosses/1.0.0": {
+        "runtime": {
+          "Naughts and Crosses.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Naughts and Crosses/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

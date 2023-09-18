@@ -1,0 +1,17 @@
+D:\jackt\Documents\Coding Projects\Naughts-and-Crosses\Naughts and Crosses\bin\Debug\net6.0-windows\Naughts and Crosses.exe
+D:\jackt\Documents\Coding Projects\Naughts-and-Crosses\Naughts and Crosses\bin\Debug\net6.0-windows\Naughts and Crosses.deps.json
+D:\jackt\Documents\Coding Projects\Naughts-and-Crosses\Naughts and Crosses\bin\Debug\net6.0-windows\Naughts and Crosses.runtimeconfig.json
+D:\jackt\Documents\Coding Projects\Naughts-and-Crosses\Naughts and Crosses\bin\Debug\net6.0-windows\Naughts and Crosses.dll
+D:\jackt\Documents\Coding Projects\Naughts-and-Crosses\Naughts and Crosses\bin\Debug\net6.0-windows\Naughts and Crosses.pdb
+D:\jackt\Documents\Coding Projects\Naughts-and-Crosses\Naughts and Crosses\obj\Debug\net6.0-windows\Naughts and Crosses.csproj.AssemblyReference.cache
+D:\jackt\Documents\Coding Projects\Naughts-and-Crosses\Naughts and Crosses\obj\Debug\net6.0-windows\Naughts_and_Crosses.Form1.resources
+D:\jackt\Documents\Coding Projects\Naughts-and-Crosses\Naughts and Crosses\obj\Debug\net6.0-windows\Naughts and Crosses.csproj.GenerateResource.cache
+D:\jackt\Documents\Coding Projects\Naughts-and-Crosses\Naughts and Crosses\obj\Debug\net6.0-windows\Naughts and Crosses.GeneratedMSBuildEditorConfig.editorconfig
+D:\jackt\Documents\Coding Projects\Naughts-and-Crosses\Naughts and Crosses\obj\Debug\net6.0-windows\Naughts and Crosses.AssemblyInfoInputs.cache
+D:\jackt\Documents\Coding Projects\Naughts-and-Crosses\Naughts and Crosses\obj\Debug\net6.0-windows\Naughts and Crosses.AssemblyInfo.cs
+D:\jackt\Documents\Coding Projects\Naughts-and-Crosses\Naughts and Crosses\obj\Debug\net6.0-windows\Naughts and Crosses.csproj.CoreCompileInputs.cache
+D:\jackt\Documents\Coding Projects\Naughts-and-Crosses\Naughts and Crosses\obj\Debug\net6.0-windows\Naughts and Crosses.dll
+D:\jackt\Documents\Coding Projects\Naughts-and-Crosses\Naughts and Crosses\obj\Debug\net6.0-windows\refint\Naughts and Crosses.dll
+D:\jackt\Documents\Coding Projects\Naughts-and-Crosses\Naughts and Crosses\obj\Debug\net6.0-windows\Naughts and Crosses.pdb
+D:\jackt\Documents\Coding Projects\Naughts-and-Crosses\Naughts and Crosses\obj\Debug\net6.0-windows\Naughts and Crosses.genruntimeconfig.cache
+D:\jackt\Documents\Coding Projects\Naughts-and-Crosses\Naughts and Crosses\obj\Debug\net6.0-windows\ref\Naughts and Crosses.dll
