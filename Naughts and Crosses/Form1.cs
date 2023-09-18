@@ -2,9 +2,10 @@ namespace Naughts_and_Crosses
 {
     public partial class Form1 : Form
     {
-        BoardTile[,] gameBoard = new BoardTile[3, 3];
+        GameController gameController;
         public Graphics graphics;
         public Pen pen;
+
         public Form1()
         {
             InitializeComponent();
@@ -17,14 +18,7 @@ namespace Naughts_and_Crosses
 
         private void DrawBoard()
         {
-            for(int x = 0; x < 3; x++)
-            {
-                for(int y = 0; y < 3; y++)
-                {
-                    Console.WriteLine($"{x * 200},{y * 200}");
-                    gameBoard[x, y] = new BoardTile(x * 200, y * 200, this);
-                }
-            }
+            gameController = new GameController(this);
 
             int pointOffset = 200;
             for (int i = 0; i < 4; i++)
@@ -58,9 +52,22 @@ namespace Naughts_and_Crosses
 
         private void SetForm()
         {
-            Size = new Size(750, 750);
+            Size = new Size(1000, 600);
             Text = "Naughts and Crosses";
             BackColor = Color.LightBlue;
+        }
+
+        public void NotiftyController(int x, int y, bool tileState)
+        {
+            bool win = gameController.CheckForWin(x, y);
+            if(win && tileState)
+            {
+                Console.WriteLine("Naughts win");
+            }
+            else if(win && !tileState)
+            {
+                Console.WriteLine("Crosses win");
+            }
         }
     }
 }

@@ -12,8 +12,9 @@ namespace Naughts_and_Crosses
         private Form1 boardForm;
         private Button tileButton;
 
-        public static bool turnState { get; private set; } = true;
-        public bool tileState { get; private set; }
+        public static bool turnState { get; private set; } = true; //true for Naught, false for Cross
+        public bool tileState { get; private set; } //true for Naught, false for Cross
+        public bool tileClicked { get; private set; } = false;
         public int tileXPosition { get; private set; }
         public int tileYPosition { get; private set; }
 
@@ -41,18 +42,22 @@ namespace Naughts_and_Crosses
 
         private void tileClick(object sender, MouseEventArgs e)
         {
+            tileClicked = true;
             tileButton.Visible = false;
             tileButton.Enabled = false;
             if (!turnState)
             {
                 TilePen.DrawNaught(boardForm.graphics, tileButton.Location.X, tileButton.Location.Y);
+                tileState = true;
             }
             else
             {
                 TilePen.DrawCross(boardForm.graphics, tileButton.Location.X, tileButton.Location.Y);
+                tileState = false;
             }
-            
-            //turnState = !turnState;
+
+            boardForm.NotiftyController(tileXPosition / 200, tileYPosition / 200, tileState);
+            turnState = !turnState;
         }
     }
 }
