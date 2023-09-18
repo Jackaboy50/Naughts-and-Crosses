@@ -3,11 +3,16 @@ namespace Naughts_and_Crosses
     public partial class Form1 : Form
     {
         BoardTile[,] gameBoard = new BoardTile[3, 3];
+        public Graphics graphics;
+        public Pen pen;
         public Form1()
         {
             InitializeComponent();
             SetForm();
             DrawBoard();
+
+            graphics = CreateGraphics();
+            pen = new Pen(Color.Red);
         }
 
         private void DrawBoard()
@@ -25,6 +30,7 @@ namespace Naughts_and_Crosses
         {
             Size = new Size(750, 750);
             Text = "Naughts and Crosses";
+            BackColor = Color.LightBlue;
         }
     }
 }

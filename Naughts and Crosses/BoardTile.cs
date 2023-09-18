@@ -33,6 +33,8 @@ namespace Naughts_and_Crosses
             tileButton.Location = new Point(tileXPosition, tileYPosition);
             tileButton.BackColor = Color.LightBlue;
             tileButton.MouseDown += new MouseEventHandler(tileClick);
+            tileButton.FlatStyle = FlatStyle.Flat;
+            tileButton.FlatAppearance.BorderSize = 0;
 
             boardForm.Controls.Add(tileButton);
         }
@@ -41,7 +43,9 @@ namespace Naughts_and_Crosses
         {
             if (turnState)
             {
-
+                tileButton.Visible = false;
+                tileButton.Enabled = false;
+                TilePen.DrawNaught(boardForm, tileButton.Location.X, tileButton.Location.Y);
             }
             else
             {
