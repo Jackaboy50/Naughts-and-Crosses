@@ -21,6 +21,7 @@ namespace Naughts_and_Crosses
             {
                 for(int y = 0; y < 3; y++)
                 {
+                    Console.WriteLine($"{x * 200},{y * 200}");
                     gameBoard[x, y] = new BoardTile(x * 200, y * 200, this);
                 }
             }
@@ -29,8 +30,8 @@ namespace Naughts_and_Crosses
             for (int i = 0; i < 4; i++)
             {
                 Button gridButton = new Button();
-                Size size = new Size();
-                Point point = new Point();
+                Size size;
+                Point point;
                 
                 if(i < 2)
                 {

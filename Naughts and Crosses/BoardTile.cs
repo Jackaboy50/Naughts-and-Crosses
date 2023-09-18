@@ -41,16 +41,18 @@ namespace Naughts_and_Crosses
 
         private void tileClick(object sender, MouseEventArgs e)
         {
-            if (turnState)
+            tileButton.Visible = false;
+            tileButton.Enabled = false;
+            if (!turnState)
             {
-                tileButton.Visible = false;
-                tileButton.Enabled = false;
-                TilePen.DrawNaught(boardForm, tileButton.Location.X, tileButton.Location.Y);
+                TilePen.DrawNaught(boardForm.graphics, tileButton.Location.X, tileButton.Location.Y);
             }
             else
             {
-
+                TilePen.DrawCross(boardForm.graphics, tileButton.Location.X, tileButton.Location.Y);
             }
+            
+            //turnState = !turnState;
         }
     }
 }
