@@ -72,6 +72,14 @@ namespace Naughts_and_Crosses
 
         public void NotiftyController(int x, int y, Color tileColor)
         {
+            if(tileColor == Color.Red)
+            {
+                tileColor = Color.DarkRed;
+            }
+            else
+            {
+                tileColor = Color.DarkGreen;
+            }
             switch(gameController.CheckForWin(x / 200, y / 200))
             {
                 case -1:
