@@ -45,18 +45,21 @@ namespace Naughts_and_Crosses
             tileClicked = true;
             tileButton.Visible = false;
             tileButton.Enabled = false;
+            Color color;
             if (!turnState)
             {
-                TilePen.DrawNaught(boardForm.graphics, tileButton.Location.X, tileButton.Location.Y);
+                color = Color.Green;
+                TilePen.DrawNaught(boardForm.graphics, tileButton.Location.X, tileButton.Location.Y, color);
                 tileState = true;
             }
             else
             {
-                TilePen.DrawCross(boardForm.graphics, tileButton.Location.X, tileButton.Location.Y);
+                color = Color.Red;
+                TilePen.DrawCross(boardForm.graphics, tileButton.Location.X, tileButton.Location.Y, color);
                 tileState = false;
             }
 
-            boardForm.NotiftyController(tileXPosition / 200, tileYPosition / 200, tileState);
+            boardForm.NotiftyController(tileXPosition, tileYPosition, color);
             turnState = !turnState;
         }
     }

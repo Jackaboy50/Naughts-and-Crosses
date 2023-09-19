@@ -24,20 +24,31 @@ namespace Naughts_and_Crosses
             for (int i = 0; i < 4; i++)
             {
                 Button gridButton = new Button();
-                Size size;
-                Point point;
-                
-                if(i < 2)
-                {
-                    size = new Size(600, 5);
-                    point = new Point(0, pointOffset);
-                }
-                else
-                {
-                    size = new Size(5, 600);
-                    point = new Point(pointOffset - 400, 0);
-                }
+                Size size = new Size();
+                Point point = new Point();
 
+                switch (i)
+                {
+                    case 0:
+                        size = new Size(626, 5);
+                        point = new Point(0, 200);
+                        break;
+
+                    case 1:
+                        size = new Size(626, 5);
+                        point = new Point(0, 405);
+                        break;
+
+                    case 2:
+                        size = new Size(5, 649);
+                        point = new Point(200, 0);
+                        break;
+
+                    case 3:
+                        size = new Size(5, 649);
+                        point = new Point(405, 0);
+                        break;
+                }
                 gridButton.Size = size;
                 gridButton.Location = point;
                 gridButton.FlatStyle = FlatStyle.Flat;
@@ -52,21 +63,39 @@ namespace Naughts_and_Crosses
 
         private void SetForm()
         {
-            Size = new Size(1000, 600);
+            Size = new Size(626, 649);
             Text = "Naughts and Crosses";
             BackColor = Color.LightBlue;
+            //FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
         }
 
-        public void NotiftyController(int x, int y, bool tileState)
+        public void NotiftyController(int x, int y, Color tileColor)
         {
-            bool win = gameController.CheckForWin(x, y);
-            if(win && tileState)
+            switch(gameController.CheckForWin(x / 200, y / 200))
             {
-                Console.WriteLine("Naughts win");
-            }
-            else if(win && !tileState)
-            {
-                Console.WriteLine("Crosses win");
+                case -1:
+                    if(gameController.tileCounter == 9)
+                    {
+                        //Game is a draw
+                    }
+                    break;
+
+                case 0:
+                    TilePen.DrawLine(graphics, 0, y + 100, 626, y + 100, tileColor);
+                    break;
+
+                case 1:
+                    TilePen.DrawLine(graphics, x + 100, 0, x + 100, 649, tileColor);
+                    break;
+
+                case 2:
+                    TilePen.DrawLine(graphics, 0, 0, 650, 650, tileColor);
+                    break;
+
+                case 3:
+                    TilePen.DrawLine(graphics, 610, 0, 0, 610, tileColor);
+                    break;
             }
         }
     }

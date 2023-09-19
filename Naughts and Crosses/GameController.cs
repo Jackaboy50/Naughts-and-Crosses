@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,21 +10,43 @@ namespace Naughts_and_Crosses
     internal class GameController
     {
         BoardTile[,] gameBoard = new BoardTile[3, 3];
+        public int tileCounter = 0;
 
         public GameController(Form1 form1)
         {
+            
             for (int x = 0; x < 3; x++)
             {
+                int xOffset = 0;
+                int yOffset = 0;
                 for (int y = 0; y < 3; y++)
                 {
-                    gameBoard[x, y] = new BoardTile(x * 200, y * 200, form1);
+                    xOffset = x * 5;
+                    yOffset = y * 5;
+                    gameBoard[x, y] = new BoardTile((x * 200) + xOffset, (y * 200) + yOffset, form1);
                 }
             }
         }
-
-        public bool CheckForWin(int x, int y)
+        public int CheckForWin(int x, int y)
         {
-            return CheckRow(y) || CheckColumn(x) || CheckDiagonal(false) || CheckDiagonal(true);
+            tileCounter++;
+            if (CheckRow(y))
+            {
+                return 0;
+            }
+            else if (CheckColumn(x))
+            {
+                return 1;
+            }
+            else if (CheckDiagonal(false))
+            {
+                return 2;
+            }
+            else if (CheckDiagonal(true))
+            {
+                return 3;
+            }
+            return -1;
         }
 
         private bool CheckRow(int y)
