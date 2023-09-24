@@ -1,8 +1,12 @@
+using System.ComponentModel;
+using System.Windows.Forms.Design;
+
 namespace Naughts_and_Crosses
 {
     public partial class Form1 : Form
     {
         GameController gameController;
+        GameMenu gameMenu;
         public Graphics graphics;
         public Pen pen;
 
@@ -18,8 +22,6 @@ namespace Naughts_and_Crosses
 
         private void DrawBoard()
         {
-            gameController = new GameController(this);
-
             int pointOffset = 200;
             for (int i = 0; i < 4; i++)
             {
@@ -59,6 +61,22 @@ namespace Naughts_and_Crosses
                 Controls[Controls.Count - 1].BringToFront();
                 pointOffset += 200;
             }
+            gameMenu = new GameMenu(this);
+        }
+
+        public void StartGame()
+        {
+            if(gameController == null)
+            {
+                gameController = new GameController();
+                gameController.CreateBoard(this);
+            }
+            else
+            {
+                graphics.Clear(TransparencyKey);
+                gameController.ResetBoard();
+                Console.WriteLine("board reset");
+            }
         }
 
         private void SetForm()
@@ -66,26 +84,33 @@ namespace Naughts_and_Crosses
             Size = new Size(626, 649);
             Text = "Naughts and Crosses";
             BackColor = Color.LightBlue;
-            //FormBorderStyle = FormBorderStyle.FixedSingle;
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
         }
 
         public void NotiftyController(int x, int y, Color tileColor)
         {
+            string winMessage = "";
             if(tileColor == Color.Red)
             {
                 tileColor = Color.DarkRed;
+                winMessage = "Crosses Win!";
             }
             else
             {
                 tileColor = Color.DarkGreen;
+                winMessage = "Naughts Win!";
             }
             switch(gameController.CheckForWin(x / 200, y / 200))
             {
                 case -1:
                     if(gameController.tileCounter == 9)
                     {
-                        //Game is a draw
+                        gameMenu.CreateWinMenu("The game ended in a draw");
+                    }
+                    else
+                    {
+                        return;
                     }
                     break;
 
@@ -105,6 +130,7 @@ namespace Naughts_and_Crosses
                     TilePen.DrawLine(graphics, 610, 0, 0, 610, tileColor);
                     break;
             }
+            gameMenu.CreateWinMenu(winMessage);
         }
     }
 }

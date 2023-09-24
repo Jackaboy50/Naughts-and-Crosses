@@ -27,6 +27,13 @@ namespace Naughts_and_Crosses
             CreateButton();
         }
 
+        public void ResetTile()
+        {
+            tileClicked = false;
+            tileButton.Visible = true;
+            tileButton.Enabled = true;
+        }
+
         private void CreateButton()
         {
             tileButton = new Button();

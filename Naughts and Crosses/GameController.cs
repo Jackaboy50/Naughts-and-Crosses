@@ -12,9 +12,11 @@ namespace Naughts_and_Crosses
         BoardTile[,] gameBoard = new BoardTile[3, 3];
         public int tileCounter = 0;
 
-        public GameController(Form1 form1)
+        public GameController()
+        {}
+
+        public void CreateBoard(Form1 form1)
         {
-            
             for (int x = 0; x < 3; x++)
             {
                 int xOffset = 0;
@@ -25,6 +27,14 @@ namespace Naughts_and_Crosses
                     yOffset = y * 5;
                     gameBoard[x, y] = new BoardTile((x * 200) + xOffset, (y * 200) + yOffset, form1);
                 }
+            }
+        }
+
+        public void ResetBoard()
+        {
+            foreach(BoardTile tile in gameBoard)
+            {
+                tile.ResetTile();
             }
         }
         public int CheckForWin(int x, int y)
