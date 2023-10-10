@@ -1,7 +1,7 @@
 using System.ComponentModel;
 using System.Windows.Forms.Design;
 
-namespace Naughts_and_Crosses
+namespace Noughts_and_Crosses
 {
     public partial class Form1 : Form
     {
@@ -14,10 +14,9 @@ namespace Naughts_and_Crosses
         {
             InitializeComponent();
             SetForm();
-            DrawBoard();
-
             graphics = CreateGraphics();
             pen = new Pen(Color.Red);
+            DrawBoard();
         }
 
         private void DrawBoard()
@@ -61,22 +60,19 @@ namespace Naughts_and_Crosses
                 Controls[Controls.Count - 1].BringToFront();
                 pointOffset += 200;
             }
-            gameMenu = new GameMenu(this);
+            gameMenu = new GameMenu(this, graphics);
         }
 
-        public void StartGame()
+        public void StartGame(bool choiceState)
         {
-            if(gameController == null)
-            {
-                gameController = new GameController();
-                gameController.CreateBoard(this);
-            }
-            else
-            {
-                graphics.Clear(TransparencyKey);
-                gameController.ResetBoard();
-                Console.WriteLine("board reset");
-            }
+            gameController = new GameController();
+            gameController.CreateBoard(this, choiceState);
+        }
+
+        public void RestartGame()
+        {
+            graphics.Clear(TransparencyKey);
+            gameController.ResetBoard();
         }
 
         private void SetForm()
@@ -90,7 +86,7 @@ namespace Naughts_and_Crosses
 
         public void NotiftyController(int x, int y, Color tileColor)
         {
-            string winMessage = "";
+            string winMessage;
             if(tileColor == Color.Red)
             {
                 tileColor = Color.DarkRed;

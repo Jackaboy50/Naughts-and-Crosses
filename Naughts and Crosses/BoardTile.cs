@@ -5,15 +5,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Naughts_and_Crosses
+namespace Noughts_and_Crosses
 {
     internal class BoardTile
     {
         private Form1 boardForm;
         private Button tileButton;
 
-        public static bool turnState { get; private set; } = true; //true for Naught, false for Cross
-        public bool tileState { get; private set; } //true for Naught, false for Cross
+        public static bool turnState { get; set; } = true; //false for Naught, true for Cross
+        public string tileState { get; private set; } //naught / cross / empty
         public bool tileClicked { get; private set; } = false;
         public int tileXPosition { get; private set; }
         public int tileYPosition { get; private set; }
@@ -29,6 +29,7 @@ namespace Naughts_and_Crosses
 
         public void ResetTile()
         {
+            tileState = "empty";
             tileClicked = false;
             tileButton.Visible = true;
             tileButton.Enabled = true;
@@ -49,6 +50,13 @@ namespace Naughts_and_Crosses
 
         private void tileClick(object sender, MouseEventArgs e)
         {
+            if(e.Button == MouseButtons.Right)
+            {
+                Console.WriteLine($"turnstate: {turnState}");
+                Console.WriteLine($"tilestate: {tileState}");
+                Console.WriteLine($"tileClicked: {tileClicked}");
+                return;
+            }
             tileClicked = true;
             tileButton.Visible = false;
             tileButton.Enabled = false;
@@ -57,13 +65,13 @@ namespace Naughts_and_Crosses
             {
                 color = Color.Green;
                 TilePen.DrawNaught(boardForm.graphics, tileButton.Location.X, tileButton.Location.Y, color);
-                tileState = true;
+                tileState = "naught";
             }
             else
             {
                 color = Color.Red;
                 TilePen.DrawCross(boardForm.graphics, tileButton.Location.X, tileButton.Location.Y, color);
-                tileState = false;
+                tileState = "cross";
             }
 
             boardForm.NotiftyController(tileXPosition, tileYPosition, color);

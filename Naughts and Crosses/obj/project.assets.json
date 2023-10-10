@@ -14,9 +14,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\jackt\\Documents\\Coding Projects\\Naughts-and-Crosses\\Naughts and Crosses\\Naughts and Crosses.csproj",
-      "projectName": "Naughts and Crosses",
-      "projectPath": "D:\\jackt\\Documents\\Coding Projects\\Naughts-and-Crosses\\Naughts and Crosses\\Naughts and Crosses.csproj",
+      "projectUniqueName": "D:\\jackt\\Documents\\Coding Projects\\Naughts-and-Crosses\\Naughts and Crosses\\Noughts and Crosses.csproj",
+      "projectName": "Noughts and Crosses",
+      "projectPath": "D:\\jackt\\Documents\\Coding Projects\\Naughts-and-Crosses\\Naughts and Crosses\\Noughts and Crosses.csproj",
       "packagesPath": "C:\\Users\\jackt\\.nuget\\packages\\",
       "outputPath": "D:\\jackt\\Documents\\Coding Projects\\Naughts-and-Crosses\\Naughts and Crosses\\obj\\",
       "projectStyle": "PackageReference",

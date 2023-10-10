@@ -1,4 +1,4 @@
-﻿namespace Naughts_and_Crosses
+﻿namespace Noughts_and_Crosses
 {
     partial class Form1
     {

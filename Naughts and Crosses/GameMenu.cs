@@ -7,7 +7,7 @@ using System.Runtime.Versioning;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Naughts_and_Crosses
+namespace Noughts_and_Crosses
 {
     internal class GameMenu
     {
@@ -23,8 +23,12 @@ namespace Naughts_and_Crosses
         Button exitButton;
         Label winnerLabel;
 
-        public GameMenu(Form1 form1)
+        private bool choiceState;
+        private Graphics graphics;
+
+        public GameMenu(Form1 form1, Graphics graphics)
         {
+            this.graphics = graphics;
             boardForm = form1;
             CreateStartMenu();
         }
@@ -51,13 +55,17 @@ namespace Naughts_and_Crosses
             playerChoiceX.Size = new Size(25, 25);
             playerChoiceX.Location = new Point(125, 200);
             playerChoiceX.BackColor = Color.Green;
+            playerChoiceX.MouseDown += new MouseEventHandler(PlayerChoiceOption);
             startMenu.Controls.Add(playerChoiceX);
+            TilePen.DrawCross(graphics, 125, 100, Color.Red);
 
             playerChoiceO = new Button();
             playerChoiceO.Size = new Size(25, 25);
             playerChoiceO.Location = new Point(350, 200);
             playerChoiceO.BackColor = Color.Red;
+            playerChoiceO.MouseDown += new MouseEventHandler(PlayerChoiceOption);
             startMenu.Controls.Add(playerChoiceO);
+            TilePen.DrawNaught(graphics, 350, 100, Color.Green);
 
             boardForm.Controls.Add(startMenu);
             boardForm.Controls[boardForm.Controls.Count - 1].BringToFront();
@@ -66,7 +74,7 @@ namespace Naughts_and_Crosses
         public void CreateWinMenu(string winMessage)
         {
             if(winMenu != null)
-            {
+            { 
                 ShowWinMenu(winMessage);
             }
             winMenu = new Panel();
@@ -82,7 +90,7 @@ namespace Naughts_and_Crosses
             restartButton.Font = new Font("Arial", 12, FontStyle.Bold);
             restartButton.FlatStyle = FlatStyle.Flat;
             restartButton.BackColor = Color.ForestGreen;
-            restartButton.MouseDown += new MouseEventHandler(StartButtonClick);
+            restartButton.MouseDown += new MouseEventHandler(RestartButtonClick);
             winMenu.Controls.Add(restartButton);
 
             exitButton = new Button();
@@ -113,20 +121,43 @@ namespace Naughts_and_Crosses
         private void ShowWinMenu(string winMessage)
         {
             winnerLabel.Text = winMessage;
-            winMenu.Show();
+            winMenu.Visible = true;
         }
 
         private void StartButtonClick(object sender, MouseEventArgs e)
         {
-            Button button = sender as Button;
-            Panel panel = button.Parent as Panel;
-            panel.Hide();
-            boardForm.StartGame();
+            startMenu.Hide();
+            boardForm.StartGame(choiceState);
+        }
+
+        private void RestartButtonClick(object sender, MouseEventArgs e)
+        {
+            foreach(Control c in boardForm.Controls)
+            {
+                if(c is Panel)
+                {
+                    c.Hide();
+                }
+            }
+            boardForm.RestartGame();
         }
 
         private void ExitButtonClick(object sender, MouseEventArgs e)
         {
             boardForm.Close();
+        }
+
+        private void PlayerChoiceOption(object sender, MouseEventArgs e)
+        {
+            Button button = sender as Button;
+            if(button.BackColor == Color.Green)
+            {
+                choiceState = false;
+            }
+            else
+            {
+                choiceState = true;
+            }
         }
     }
 }

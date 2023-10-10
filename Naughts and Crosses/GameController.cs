@@ -5,7 +5,7 @@ using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Naughts_and_Crosses
+namespace Noughts_and_Crosses
 {
     internal class GameController
     {
@@ -15,12 +15,12 @@ namespace Naughts_and_Crosses
         public GameController()
         {}
 
-        public void CreateBoard(Form1 form1)
+        public void CreateBoard(Form1 form1, bool choiceState)
         {
             for (int x = 0; x < 3; x++)
             {
-                int xOffset = 0;
-                int yOffset = 0;
+                int xOffset;
+                int yOffset;
                 for (int y = 0; y < 3; y++)
                 {
                     xOffset = x * 5;
@@ -28,10 +28,12 @@ namespace Naughts_and_Crosses
                     gameBoard[x, y] = new BoardTile((x * 200) + xOffset, (y * 200) + yOffset, form1);
                 }
             }
+            BoardTile.turnState = choiceState;
         }
 
         public void ResetBoard()
         {
+            tileCounter = 0;
             foreach(BoardTile tile in gameBoard)
             {
                 tile.ResetTile();
@@ -61,7 +63,7 @@ namespace Naughts_and_Crosses
 
         private bool CheckRow(int y)
         {
-            bool state = gameBoard[0, y].tileState;
+            string state = gameBoard[0, y].tileState;
             for(int i = 0; i < 3; i++)
             {
                 if (!gameBoard[i, y].tileClicked)
@@ -83,7 +85,7 @@ namespace Naughts_and_Crosses
 
         private bool CheckColumn(int x)
         {
-            bool state = gameBoard[x, 0].tileState;
+            string state = gameBoard[x, 0].tileState;
             for(int i = 0; i < 3; i++)
             {
                 if(!gameBoard[x, i].tileClicked)
@@ -105,7 +107,7 @@ namespace Naughts_and_Crosses
 
         private bool CheckDiagonal(bool anti)
         {
-            bool state;
+            string state;
             if (anti)
             {
                 state = gameBoard[0, 2].tileState;

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Naughts_and_Crosses
+namespace Noughts_and_Crosses
 {
     internal static class TilePen
     {
