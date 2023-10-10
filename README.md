@@ -1,2 +1,2 @@
-# Naughts-and-Crosses
-C# Winforms implementation of Naughts and Crosses / Tic Tac Toe
+# Noughts-and-Crosses
+C# Winforms implementation of Noughts and Crosses / Tic Tac Toe
