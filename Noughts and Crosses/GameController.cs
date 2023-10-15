@@ -12,8 +12,8 @@ namespace Noughts_and_Crosses
     /// </summary>
     internal class GameController
     {
-        BoardTile[,] gameBoard = new BoardTile[3, 3];
-        public int tileCounter = 0;
+        private BoardTile[,] gameBoard = new BoardTile[3, 3]; //Stores the board tile instances
+        public int tileCounter = 0; //Counts the tiles that have been pressed
 
         /// <summary>
         /// Initializes a new instance of the GameController class

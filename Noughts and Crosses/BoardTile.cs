@@ -15,11 +15,11 @@ namespace Noughts_and_Crosses
         private GameForm boardForm;
         private Button tileButton;
 
-        public static bool turnState { get; set; } = true; //false for Naught, true for Cross
-        public string tileState { get; private set; } //naught / cross / empty
-        public bool tileClicked { get; private set; } = false;
-        public int tileXPosition { get; private set; }
-        public int tileYPosition { get; private set; }
+        public static bool turnState { get; set; } = true; //Specifies whether the tile is true / nought or false / cross
+        public string tileState { get; private set; } //Specifies what state the tile is in: nought / cross / empty
+        public bool tileClicked { get; private set; } = false; //Specifies whether or not the tile has been clicked
+        public int tileXPosition { get; private set; } //Specifies the tile's X Position
+        public int tileYPosition { get; private set; } //Specifies the tile's Y Position
 
         /// <summary>
         /// Initializes a new instance of the BoardTile class
@@ -32,7 +32,6 @@ namespace Noughts_and_Crosses
             this.tileXPosition = tileXPosition;
             this.tileYPosition = tileYPosition;
             this.boardForm = boardForm;
-
             CreateButton();
         }
         /// <summary>
@@ -57,7 +56,6 @@ namespace Noughts_and_Crosses
             tileButton.MouseDown += new MouseEventHandler(tileClick);
             tileButton.FlatStyle = FlatStyle.Flat;
             tileButton.FlatAppearance.BorderSize = 0;
-
             boardForm.Controls.Add(tileButton);
         }
         /// <summary>

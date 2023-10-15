@@ -8,8 +8,8 @@ namespace Noughts_and_Crosses
     /// </summary>
     public partial class GameForm : Form
     {
-        GameController gameController;
-        GameMenu gameMenu;
+        private GameController gameController;
+        private GameMenu gameMenu;
         public Graphics graphics;
         public Pen pen;
         /// <summary>

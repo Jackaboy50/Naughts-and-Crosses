@@ -14,19 +14,21 @@ namespace Noughts_and_Crosses
     /// </summary>
     internal class GameMenu
     {
-        GameForm boardForm;
+        private GameForm boardForm; //Specifies the form where the menu's will be created
 
-        Panel startMenu;
-        Button playerChoiceX;
-        Button playerChoiceO;
-        Button startButton;
+        //Elements used within the start menu
+        private Panel startMenu;
+        private Button playerChoiceX;
+        private Button playerChoiceO;
+        private Button startButton;
 
-        Panel winMenu;
-        Button restartButton;
-        Button exitButton;
-        Label winnerLabel;
+        //Elements used within the win menu
+        private Panel winMenu;
+        private Button restartButton;
+        private Button exitButton;
+        private Label winnerLabel;
 
-        private bool choiceState;
+        private bool choiceState; //Specifies the choice state set by the player choice buttons
         
         /// <summary>
         /// Initializes a new instance of the GameMenu class
@@ -84,6 +86,7 @@ namespace Noughts_and_Crosses
         /// <param name="winMessage">Specifies the message to be displayed</param>
         public void CreateWinMenu(string winMessage)
         {
+            //If the win menu already exists, set the message and return
             if(winMenu != null)
             { 
                 ShowWinMenu(winMessage);
