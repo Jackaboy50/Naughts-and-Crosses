@@ -4,7 +4,6 @@ D:\jackt\Documents\Coding Projects\Noughts-and-Crosses\Noughts and Crosses\bin\D
 D:\jackt\Documents\Coding Projects\Noughts-and-Crosses\Noughts and Crosses\bin\Debug\net6.0-windows\Noughts and Crosses.dll
 D:\jackt\Documents\Coding Projects\Noughts-and-Crosses\Noughts and Crosses\bin\Debug\net6.0-windows\Noughts and Crosses.pdb
 D:\jackt\Documents\Coding Projects\Noughts-and-Crosses\Noughts and Crosses\obj\Debug\net6.0-windows\Noughts and Crosses.csproj.AssemblyReference.cache
-D:\jackt\Documents\Coding Projects\Noughts-and-Crosses\Noughts and Crosses\obj\Debug\net6.0-windows\Noughts_and_Crosses.Form1.resources
 D:\jackt\Documents\Coding Projects\Noughts-and-Crosses\Noughts and Crosses\obj\Debug\net6.0-windows\Noughts and Crosses.csproj.GenerateResource.cache
 D:\jackt\Documents\Coding Projects\Noughts-and-Crosses\Noughts and Crosses\obj\Debug\net6.0-windows\Noughts and Crosses.GeneratedMSBuildEditorConfig.editorconfig
 D:\jackt\Documents\Coding Projects\Noughts-and-Crosses\Noughts and Crosses\obj\Debug\net6.0-windows\Noughts and Crosses.AssemblyInfoInputs.cache
@@ -15,3 +14,4 @@ D:\jackt\Documents\Coding Projects\Noughts-and-Crosses\Noughts and Crosses\obj\D
 D:\jackt\Documents\Coding Projects\Noughts-and-Crosses\Noughts and Crosses\obj\Debug\net6.0-windows\Noughts and Crosses.pdb
 D:\jackt\Documents\Coding Projects\Noughts-and-Crosses\Noughts and Crosses\obj\Debug\net6.0-windows\Noughts and Crosses.genruntimeconfig.cache
 D:\jackt\Documents\Coding Projects\Noughts-and-Crosses\Noughts and Crosses\obj\Debug\net6.0-windows\ref\Noughts and Crosses.dll
+D:\jackt\Documents\Coding Projects\Noughts-and-Crosses\Noughts and Crosses\obj\Debug\net6.0-windows\Noughts_and_Crosses.GameForm.resources

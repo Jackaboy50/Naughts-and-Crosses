@@ -1,6 +1,6 @@
 ﻿namespace Noughts_and_Crosses
 {
-    partial class Form1
+    partial class GameForm
     {
         /// <summary>
         ///  Required designer variable.

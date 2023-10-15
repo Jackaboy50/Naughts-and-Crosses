@@ -7,9 +7,12 @@ using System.Threading.Tasks;
 
 namespace Noughts_and_Crosses
 {
+    /// <summary>
+    /// Represents a tile on the board
+    /// </summary>
     internal class BoardTile
     {
-        private Form1 boardForm;
+        private GameForm boardForm;
         private Button tileButton;
 
         public static bool turnState { get; set; } = true; //false for Naught, true for Cross
@@ -18,7 +21,13 @@ namespace Noughts_and_Crosses
         public int tileXPosition { get; private set; }
         public int tileYPosition { get; private set; }
 
-        public BoardTile(int tileXPosition, int tileYPosition, Form1 boardForm)
+        /// <summary>
+        /// Initializes a new instance of the BoardTile class
+        /// </summary>
+        /// <param name="tileXPosition">X Position of the tile</param>
+        /// <param name="tileYPosition">Y Position of the tile</param>
+        /// <param name="boardForm">Form to place the tile on</param>
+        public BoardTile(int tileXPosition, int tileYPosition, GameForm boardForm)
         {
             this.tileXPosition = tileXPosition;
             this.tileYPosition = tileYPosition;
@@ -26,7 +35,9 @@ namespace Noughts_and_Crosses
 
             CreateButton();
         }
-
+        /// <summary>
+        /// Resets tile to default
+        /// </summary>
         public void ResetTile()
         {
             tileState = "empty";
@@ -34,7 +45,9 @@ namespace Noughts_and_Crosses
             tileButton.Visible = true;
             tileButton.Enabled = true;
         }
-
+        /// <summary>
+        /// Creates the tile game button
+        /// </summary>
         private void CreateButton()
         {
             tileButton = new Button();
@@ -47,16 +60,13 @@ namespace Noughts_and_Crosses
 
             boardForm.Controls.Add(tileButton);
         }
-
+        /// <summary>
+        /// Event handler for clicking a tile
+        /// </summary>
+        /// <param name="sender">Specifies where the event was sent from</param>
+        /// <param name="e">Specifies the event</param>
         private void tileClick(object sender, MouseEventArgs e)
         {
-            if(e.Button == MouseButtons.Right)
-            {
-                Console.WriteLine($"turnstate: {turnState}");
-                Console.WriteLine($"tilestate: {tileState}");
-                Console.WriteLine($"tileClicked: {tileClicked}");
-                return;
-            }
             tileClicked = true;
             tileButton.Visible = false;
             tileButton.Enabled = false;

@@ -9,9 +9,12 @@ using System.Threading.Tasks;
 
 namespace Noughts_and_Crosses
 {
+    /// <summary>
+    /// Represents the game menu
+    /// </summary>
     internal class GameMenu
     {
-        Form1 boardForm;
+        GameForm boardForm;
 
         Panel startMenu;
         Button playerChoiceX;
@@ -25,13 +28,18 @@ namespace Noughts_and_Crosses
 
         private bool choiceState;
         
-
-        public GameMenu(Form1 form1)
+        /// <summary>
+        /// Initializes a new instance of the GameMenu class
+        /// </summary>
+        /// <param name="form1">Specifies where the menu's are created</param>
+        public GameMenu(GameForm form1)
         {
             boardForm = form1;
             CreateStartMenu();
         }
-
+        /// <summary>
+        /// Creates the start menu for the game
+        /// </summary>
         public void CreateStartMenu()
         {
             startMenu = new Panel();
@@ -70,7 +78,10 @@ namespace Noughts_and_Crosses
             boardForm.Controls.Add(startMenu);
             boardForm.Controls[boardForm.Controls.Count - 1].BringToFront();
         }
-
+        /// <summary>
+        /// Creates the win menu for the game
+        /// </summary>
+        /// <param name="winMessage">Specifies the message to be displayed</param>
         public void CreateWinMenu(string winMessage)
         {
             if(winMenu != null)
@@ -118,26 +129,41 @@ namespace Noughts_and_Crosses
             boardForm.Controls[boardForm.Controls.Count - 1].BringToFront();
 
         }
-
+        /// <summary>
+        /// Event handler for the start menu's paint event
+        /// </summary>
+        /// <param name="sender">Specifies where the event was sent from</param>
+        /// <param name="e">Specifies the event</param>
         private void startMenuPaint(object sender, PaintEventArgs e)
         {
             Graphics graphics = e.Graphics;
             TilePen.DrawNought(graphics, 35, 10, Color.Green);
             TilePen.DrawCross(graphics, 265, 10, Color.Red);
         }
-
+        /// <summary>
+        /// Displays the win menu
+        /// </summary>
+        /// <param name="winMessage">Specifies the message to be displayed</param>
         private void ShowWinMenu(string winMessage)
         {
             winnerLabel.Text = winMessage;
             winMenu.Visible = true;
         }
-
+        /// <summary>
+        /// Event handler for the start button
+        /// </summary>
+        /// <param name="sender">Specifies where the event was sent from</param>
+        /// <param name="e">Specifies the event</param>
         private void StartButtonClick(object sender, MouseEventArgs e)
         {
             startMenu.Hide();
             boardForm.StartGame(choiceState);
         }
-
+        /// <summary>
+        /// Event handler for the restart button
+        /// </summary>
+        /// <param name="sender">Specifies where the event was sent from</param>
+        /// <param name="e">Specifies the event</param>
         private void RestartButtonClick(object sender, MouseEventArgs e)
         {
             foreach(Control c in boardForm.Controls)
@@ -149,12 +175,20 @@ namespace Noughts_and_Crosses
             }
             boardForm.RestartGame();
         }
-
+        /// <summary>
+        /// Event handler for exit button
+        /// </summary>
+        /// <param name="sender">Specifies where the event was sent from</param>
+        /// <param name="e">Specifies the event</param>
         private void ExitButtonClick(object sender, MouseEventArgs e)
         {
             boardForm.Close();
         }
-
+        /// <summary>
+        /// Event handler for player choice button
+        /// </summary>
+        /// <param name="sender">Specifies where the event was sent from</param>
+        /// <param name="e">Specifies the event</param>
         private void PlayerChoiceOption(object sender, MouseEventArgs e)
         {
             Button button = sender as Button;

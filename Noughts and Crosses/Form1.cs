@@ -3,14 +3,19 @@ using System.Windows.Forms.Design;
 
 namespace Noughts_and_Crosses
 {
-    public partial class Form1 : Form
+    /// <summary>
+    /// Represents the window for the noughts and crosses game
+    /// </summary>
+    public partial class GameForm : Form
     {
         GameController gameController;
         GameMenu gameMenu;
         public Graphics graphics;
         public Pen pen;
-
-        public Form1()
+        /// <summary>
+        /// Initializes a new instance of the GameForm class
+        /// </summary>
+        public GameForm()
         {
             InitializeComponent();
             SetForm();
@@ -18,7 +23,9 @@ namespace Noughts_and_Crosses
             pen = new Pen(Color.Red);
             DrawBoard();
         }
-
+        /// <summary>
+        /// Draws the board for the game
+        /// </summary>
         private void DrawBoard()
         {
             int pointOffset = 200;
@@ -62,19 +69,26 @@ namespace Noughts_and_Crosses
             }
             gameMenu = new GameMenu(this);
         }
-
+        /// <summary>
+        /// Starts the noughts and crosses game
+        /// </summary>
+        /// <param name="choiceState">Specifies what state the board starts in</param>
         public void StartGame(bool choiceState)
         {
             gameController = new GameController();
             gameController.CreateBoard(this, choiceState);
         }
-
+        /// <summary>
+        /// Restarts the noughts and crosses game
+        /// </summary>
         public void RestartGame()
         {
             graphics.Clear(TransparencyKey);
             gameController.ResetBoard();
         }
-
+        /// <summary>
+        /// Sets the properties for the form
+        /// </summary>
         private void SetForm()
         {
             Size = new Size(626, 649);
@@ -83,7 +97,12 @@ namespace Noughts_and_Crosses
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
         }
-
+        /// <summary>
+        /// Notifies the controller of the tile clicked
+        /// </summary>
+        /// <param name="x">Specifies the X coordinate of the tile pressed</param>
+        /// <param name="y">Specifies the Y coordinate of the tile pressed</param>
+        /// <param name="tileColor">Specifies the colour for the tile</param>
         public void NotiftyController(int x, int y, Color tileColor)
         {
             string winMessage;
@@ -129,7 +148,11 @@ namespace Noughts_and_Crosses
             }
             gameMenu.CreateWinMenu(winMessage);
         }
-
+        /// <summary>
+        /// Loads the form
+        /// </summary>
+        /// <param name="sender">Specifies where the event is sent from</param>
+        /// <param name="e">Specifies the event</param>
         private void Form1_Load(object sender, EventArgs e)
         {
 

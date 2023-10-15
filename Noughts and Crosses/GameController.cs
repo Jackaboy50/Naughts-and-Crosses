@@ -7,15 +7,25 @@ using System.Threading.Tasks;
 
 namespace Noughts_and_Crosses
 {
+    /// <summary>
+    /// Represents a controller for the noughts and crosses game
+    /// </summary>
     internal class GameController
     {
         BoardTile[,] gameBoard = new BoardTile[3, 3];
         public int tileCounter = 0;
 
+        /// <summary>
+        /// Initializes a new instance of the GameController class
+        /// </summary>
         public GameController()
         {}
-
-        public void CreateBoard(Form1 form1, bool choiceState)
+        /// <summary>
+        /// Creates the board and tiles
+        /// </summary>
+        /// <param name="form1">Specifies where the board will be created</param>
+        /// <param name="choiceState">Specifies what state the board starts in</param>
+        public void CreateBoard(GameForm form1, bool choiceState)
         {
             for (int x = 0; x < 3; x++)
             {
@@ -30,7 +40,9 @@ namespace Noughts_and_Crosses
             }
             BoardTile.turnState = choiceState;
         }
-
+        /// <summary>
+        /// Resets the board to it's default state
+        /// </summary>
         public void ResetBoard()
         {
             tileCounter = 0;
@@ -39,6 +51,12 @@ namespace Noughts_and_Crosses
                 tile.ResetTile();
             }
         }
+        /// <summary>
+        /// Checks whether there is a win on the board
+        /// </summary>
+        /// <param name="x">Specifies the starting X position</param>
+        /// <param name="y">Specifies the starting Y position</param>
+        /// <returns></returns>
         public int CheckForWin(int x, int y)
         {
             tileCounter++;
@@ -60,7 +78,11 @@ namespace Noughts_and_Crosses
             }
             return -1;
         }
-
+        /// <summary>
+        /// Checks the given row for a win condition
+        /// </summary>
+        /// <param name="y">Specifies the row to check</param>
+        /// <returns></returns>
         private bool CheckRow(int y)
         {
             string state = gameBoard[0, y].tileState;
@@ -82,7 +104,11 @@ namespace Noughts_and_Crosses
             }
             return false;
         }
-
+        /// <summary>
+        /// Checks the given column for a win condition
+        /// </summary>
+        /// <param name="x">Specifies the column to check</param>
+        /// <returns></returns>
         private bool CheckColumn(int x)
         {
             string state = gameBoard[x, 0].tileState;
@@ -104,10 +130,15 @@ namespace Noughts_and_Crosses
             }
             return false;
         }
-
+        /// <summary>
+        /// Checks the given diagonal for a win condition
+        /// </summary>
+        /// <param name="anti">Specifies which diagonal to check</param>
+        /// <returns></returns>
         private bool CheckDiagonal(bool anti)
         {
             string state;
+            //Checks top right to bottom left if true
             if (anti)
             {
                 state = gameBoard[0, 2].tileState;
@@ -128,6 +159,7 @@ namespace Noughts_and_Crosses
                     }
                 }
             }
+            //Checks top left to bottom right if false
             else
             {
                 state = gameBoard[0, 0].tileState;
