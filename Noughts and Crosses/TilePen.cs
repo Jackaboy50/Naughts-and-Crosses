@@ -9,7 +9,7 @@ namespace Noughts_and_Crosses
     internal static class TilePen
     {
         private static Pen pen = new Pen(Color.Transparent, 10);
-        public static void DrawNaught(Graphics formGraphics, int xPosition, int yPosition, Color color)
+        public static void DrawNought(Graphics formGraphics, int xPosition, int yPosition, Color color)
         {
             pen.Color = color;
             Rectangle shape = new Rectangle(xPosition + 50, yPosition + 50, 100, 100);

@@ -60,7 +60,7 @@ namespace Noughts_and_Crosses
                 Controls[Controls.Count - 1].BringToFront();
                 pointOffset += 200;
             }
-            gameMenu = new GameMenu(this, graphics);
+            gameMenu = new GameMenu(this);
         }
 
         public void StartGame(bool choiceState)
@@ -78,7 +78,7 @@ namespace Noughts_and_Crosses
         private void SetForm()
         {
             Size = new Size(626, 649);
-            Text = "Naughts and Crosses";
+            Text = "Noughts and Crosses";
             BackColor = Color.LightBlue;
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
@@ -95,7 +95,7 @@ namespace Noughts_and_Crosses
             else
             {
                 tileColor = Color.DarkGreen;
-                winMessage = "Naughts Win!";
+                winMessage = "Noughts Win!";
             }
             switch(gameController.CheckForWin(x / 200, y / 200))
             {
@@ -103,6 +103,7 @@ namespace Noughts_and_Crosses
                     if(gameController.tileCounter == 9)
                     {
                         gameMenu.CreateWinMenu("The game ended in a draw");
+                        return;
                     }
                     else
                     {
@@ -127,6 +128,11 @@ namespace Noughts_and_Crosses
                     break;
             }
             gameMenu.CreateWinMenu(winMessage);
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

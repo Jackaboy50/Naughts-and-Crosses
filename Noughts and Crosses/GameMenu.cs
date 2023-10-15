@@ -24,11 +24,10 @@ namespace Noughts_and_Crosses
         Label winnerLabel;
 
         private bool choiceState;
-        private Graphics graphics;
+        
 
-        public GameMenu(Form1 form1, Graphics graphics)
+        public GameMenu(Form1 form1)
         {
-            this.graphics = graphics;
             boardForm = form1;
             CreateStartMenu();
         }
@@ -40,6 +39,7 @@ namespace Noughts_and_Crosses
             startMenu.Location = new Point(50, 100);
             startMenu.BackColor = Color.LightGray;
             startMenu.BorderStyle = BorderStyle.FixedSingle;
+            startMenu.Paint += new PaintEventHandler(startMenuPaint);
 
             startButton = new Button();
             startButton.Size = new Size(200, 40);
@@ -57,7 +57,7 @@ namespace Noughts_and_Crosses
             playerChoiceX.BackColor = Color.Green;
             playerChoiceX.MouseDown += new MouseEventHandler(PlayerChoiceOption);
             startMenu.Controls.Add(playerChoiceX);
-            TilePen.DrawCross(graphics, 125, 100, Color.Red);
+            
 
             playerChoiceO = new Button();
             playerChoiceO.Size = new Size(25, 25);
@@ -65,7 +65,7 @@ namespace Noughts_and_Crosses
             playerChoiceO.BackColor = Color.Red;
             playerChoiceO.MouseDown += new MouseEventHandler(PlayerChoiceOption);
             startMenu.Controls.Add(playerChoiceO);
-            TilePen.DrawNaught(graphics, 350, 100, Color.Green);
+            
 
             boardForm.Controls.Add(startMenu);
             boardForm.Controls[boardForm.Controls.Count - 1].BringToFront();
@@ -76,6 +76,7 @@ namespace Noughts_and_Crosses
             if(winMenu != null)
             { 
                 ShowWinMenu(winMessage);
+                return;
             }
             winMenu = new Panel();
             winMenu.Size = new Size(500, 400);
@@ -116,6 +117,13 @@ namespace Noughts_and_Crosses
             boardForm.Controls.Add(winMenu);
             boardForm.Controls[boardForm.Controls.Count - 1].BringToFront();
 
+        }
+
+        private void startMenuPaint(object sender, PaintEventArgs e)
+        {
+            Graphics graphics = e.Graphics;
+            TilePen.DrawNought(graphics, 35, 10, Color.Green);
+            TilePen.DrawCross(graphics, 265, 10, Color.Red);
         }
 
         private void ShowWinMenu(string winMessage)

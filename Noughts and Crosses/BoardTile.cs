@@ -64,7 +64,7 @@ namespace Noughts_and_Crosses
             if (!turnState)
             {
                 color = Color.Green;
-                TilePen.DrawNaught(boardForm.graphics, tileButton.Location.X, tileButton.Location.Y, color);
+                TilePen.DrawNought(boardForm.graphics, tileButton.Location.X, tileButton.Location.Y, color);
                 tileState = "naught";
             }
             else
